@@ -44,8 +44,19 @@
         },
         go:function(lat,lng,loc){
 
-            var moveLatLon = new kakao.maps.LatLng(lat,lng);
-            map.panTo(moveLatLon);
+            var mapContainer = document.querySelector('#map03 > #map');
+            var mapOption =  {
+                center: new kakao.maps.LatLng(lat,lng), // 지도의 중심좌표
+                level: 5 // 지도의 확대 레벨
+            };
+            map = new kakao.maps.Map(mapContainer, mapOption);
+
+            var mapTypeControl = new kakao.maps.MapTypeControl();
+            map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+            var zoomControl = new kakao.maps.ZoomControl();
+            map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+            // var moveLatLon = new kakao.maps.LatLng(lat,lng);
+            // map.panTo(moveLatLon);
 
             var markerPosition  = new kakao.maps.LatLng(lat,lng);
             var marker = new kakao.maps.Marker({
@@ -78,7 +89,7 @@
                 });
                 // infoWindow
                 var iwContent = '<h2>'+positions[i].title+'</h2>';
-                iwContent += '<img src="/img/'+positions[i].img+'" style="width:50px">';
+                iwContent += '<img src="/uimg/'+positions[i].img+'" style="width:50px">';
 
                 var infowindow = new kakao.maps.InfoWindow({
                     position : markerPosition,
@@ -87,7 +98,7 @@
 
                 kakao.maps.event.addListener(marker, 'mouseover', mouseoverListener(marker, infowindow));
                 kakao.maps.event.addListener(marker, 'mouseout', mouseoutListener(marker, infowindow));
-                kakao.maps.event.addListener(marker, 'click', mouseclickListener(positions[i].target));
+                kakao.maps.event.addListener(marker, 'click', mouseclickListener(positions[i].id));
 
 
                 function mouseoverListener(marker, infowindow) {
@@ -102,7 +113,7 @@
                 }
                 function mouseclickListener(target) {
                     return function(){
-                        location.href = target;
+                        location.href = '/map/detail?id='+target;
                     };
                 }
 

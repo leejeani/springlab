@@ -16,12 +16,14 @@ class CFRCelebrityTests {
 
     @Value("${uploadimgdir}")
     String imgpath;
+    @Autowired
+    CFRCelebrityUtil celebrityUtil;
 
     @Test
     void contextLoads() throws ParseException {
         String imgname = "ma2.jpg";
         JSONObject result =
-                (JSONObject)CFRCelebrityUtil.getResult(imgpath,imgname);
+                (JSONObject)celebrityUtil.getResult(imgpath,imgname);
         log.info(result.toJSONString());
     }
 

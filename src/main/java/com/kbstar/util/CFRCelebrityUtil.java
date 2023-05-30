@@ -17,6 +17,7 @@ public class CFRCelebrityUtil {
     String cfr_id;
     @Value("${cfr_key}")
     String cfr_key;
+
     public Object getResult(String imgpath, String imgname) throws ParseException {
         String result = "";
 

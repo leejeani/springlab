@@ -1,4 +1,5 @@
 package com.kbstar.util;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -9,6 +10,8 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+
+@Slf4j
 @Component
 public class CFRFaceUtil {
 
@@ -18,6 +21,9 @@ public class CFRFaceUtil {
     String cfr_key;
 
     public Object getResult(String imgpath, String imgname) throws ParseException {
+        log.info("--------------------------------------:",cfr_id);
+        log.info("--------------------------------------:",cfr_key);
+
         String result = "";
         StringBuffer reqStr = new StringBuffer();
         String clientId = cfr_id;//애플리케이션 클라이언트 아이디값";

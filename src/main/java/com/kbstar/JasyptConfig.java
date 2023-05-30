@@ -4,6 +4,7 @@ import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties
 import org.jasypt.encryption.StringEncryptor;
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,7 +12,8 @@ import org.springframework.context.annotation.Configuration;
 @EnableEncryptableProperties
 public class JasyptConfig {
 
-    private static final String KEY = "mykey";
+    @Value("${jasypt.pwd}")
+    private String KEY;
     private static final String ALGORITHM =  "PBEWithMD5AndDES";
 
     @Bean("jasyptStringEncryptor")

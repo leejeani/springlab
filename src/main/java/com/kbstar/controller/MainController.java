@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -68,6 +69,52 @@ public class MainController {
     @RequestMapping("/pic")
     public String pic(Model model){
         model.addAttribute("center","pic");
+        return "index";
+    }
+    @RequestMapping("/test")
+    public String test(Model model){
+        ArrayList<List> data = new ArrayList<>();
+        ArrayList<Cust> data1 = new ArrayList<>();
+        ArrayList<Cust> data2 = new ArrayList<>();
+        ArrayList<Cust> data3 = new ArrayList<>();
+        data1.add(new Cust("id01","pwd01","name1"));
+        data1.add(new Cust("id01","pwd01","name2"));
+        data2.add(new Cust("id02","pwd01","name1"));
+        data2.add(new Cust("id02","pwd01","name2"));
+        data3.add(new Cust("id03","pwd01","name1"));
+        data3.add(new Cust("id03","pwd01","name2"));
+
+        model.addAttribute("data1",data1);
+        model.addAttribute("data2",data2);
+        model.addAttribute("data3",data3);
+        model.addAttribute("start","1");
+        model.addAttribute("end","3");
+        model.addAttribute("center","test");
+        return "index";
+    }
+    @RequestMapping("/cal1")
+    public String cal1(Model model){
+        model.addAttribute("center","cal1");
+        return "index";
+    }
+    @RequestMapping("/cal2")
+    public String cal2(Model model){
+        model.addAttribute("center","cal2");
+        return "index";
+    }
+    @RequestMapping("/cal3")
+    public String cal3(Model model){
+        model.addAttribute("center","cal3");
+        return "index";
+    }
+    @RequestMapping("/cal4")
+    public String cal4(Model model){
+        model.addAttribute("center","cal4");
+        return "index";
+    }
+    @RequestMapping("/cal5")
+    public String cal5(Model model){
+        model.addAttribute("center","cal5");
         return "index";
     }
     @RequestMapping("/websocket")
@@ -156,7 +203,7 @@ public class MainController {
         try {
             cust.setPwd(encoder.encode(cust.getPwd()));
             custService.register(cust);
-            session.setAttribute("logincust",cust);
+           // session.setAttribute("logincust",cust);
         } catch (Exception e) {
             throw new Exception("가입 오류");
         }

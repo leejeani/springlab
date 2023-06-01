@@ -64,6 +64,10 @@
 
     $(function(){
         register_form.init();
+
+
+
+
     });
 </script>
 <div class="col-sm-8 text-left">
@@ -99,6 +103,7 @@
                         </div>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

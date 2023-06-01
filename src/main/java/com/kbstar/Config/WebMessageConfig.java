@@ -1,4 +1,4 @@
-package com.kbstar;
+package com.kbstar.Config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
